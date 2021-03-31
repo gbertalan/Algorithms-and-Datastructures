@@ -1,0 +1,8 @@
+https://stackoverflow.com/questions/13467674/determining-complexity-for-recursive-functions-big-o-notation
+
+https://stackoverflow.com/questions/47404869/calculating-big-o-notation-with-recursion
+
+https://stackoverflow.com/questions/48173657/if-the-input-size-of-a-recursive-function-decreases-by-2-is-it-a-factorial-time
+
+https://stackoverflow.com/questions/11607376/which-function-grows-faster-exponential-or-factorial
+

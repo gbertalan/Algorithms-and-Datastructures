@@ -1,0 +1,90 @@
+Making a guess and proving it by induction
+
+What is the tightest bound on the runtime of method f(int x)?
+
+public static int f(int x) {
+
+	if(x<1) { // 2
+		return 1; // 1 
+	} else {
+		return f(x-1) + f(x-1); // T(n-1) + T(n-1) + 2
+	}
+	
+}
+
+- - - - - - - - -
+
+[n: input size]
+
+
+Recurrence equation:
+T(n) = c1 + 2T(n-1) [if n>0]
+T(0) = c0
+
+
+Making an educated guess:
+
+Visualizing the recursive calls (with input variable n, n-1, etc):
+[n]
+[n-1] [n-1]
+[n-2][n-2] [n-2][n-2]
+[n-3][n-3] [n-3][n-3] [n-3][n-3] [n-3][n-3]
+...
+[0][0][0][0][0][0][0][0]...[0]
+
+Recursive case:
+1T(n)
+2T(n-1)
+4T(n-2)
+8T(n-3)
+...
+2^(n-1) * T(1)
+Base case:
+2^n * T(0)
+
+= 2^n * c0
+
+
+So we get the closed form equation:
+(1+2+4+8+...+2^(n-1))c1 + 2^n * c0
+= (2^n -1) * c1 + 2^n * c0
+
+---------
+
+To prove:
+Given that:
+T(n) = c1 + 2T(n-1) [if n>0]
+T(0) = c0
+
+then T(n) = (2^n -1) * c1 + 2^n * c0.
+For all n >=0.
+
+---------
+
+Proof [by Induction]:
+Base case (k=0):
+T(0) = c0. [Given]
+T(0) = (2^0 -1) * c1 + 2^0 * c0 = (1-1)*c1 + 1 * c0 = c0. [By arithmetic]
+
+Inductive case (k>0):
+[Induction Hypothesis [I.H.] : T(k) = (2^k -1) * c1 + 2^k * c0.]
+
+T(k) = c1 + 2T(k-1) [Given]
+T(k+1) = c1 + 2T(k)
+
+= c1 + 2((2^k -1) * c1 + 2^k * c0) [by the I.H.]
+= c1 + 2^(k+1) * c1 + 2*c1 + 2^(k+1) * c0 [by arithmetic]
+= (2^(k+1) -1) * c1 + 2^(k+1) * c0 [by arithmetic]
+Q.E.D
+
+---------
+
+Therefore the time complexity is O(2^n).
+
+---------
+---------
+
+
+
+
+
